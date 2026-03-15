@@ -1,4 +1,43 @@
- margin: 20px;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XV Guadalupe - Estilo Victoriano Vintage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --burgundy: #630d16;
+            --gold: #b3914d;
+            --cream: #fdfaf5;
+            --black: #000000; 
+            --near-black: #080808;
+        }
+        body {
+            background-color: var(--black);
+            color: var(--cream);
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        .vintage-container {
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
+                        url('https://www.transparenttextures.com/patterns/pinstripe.png');
+            border: 1px solid var(--gold);
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .victorian-border {
+            border: 8px double var(--gold);
+            margin: 10px;
+            padding: 15px;
+        }
+        @media (min-width: 768px) {
+            .victorian-border {
+                margin: 20px;
                 padding: 40px;
             }
         }
