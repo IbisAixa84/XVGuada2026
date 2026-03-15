@@ -1,44 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XV Guadalupe - Estilo Victoriano Vintage</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --burgundy: #630d16;
-            --gold: #b3914d;
-            --cream: #fdfaf5;
-            /* Color restaurado a negro puro */
-            --black: #000000; 
-            --near-black: #080808;
-        }
-        body {
-            background-color: var(--black);
-            color: var(--cream);
-            font-family: 'Cormorant Garamond', serif;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-        }
-        .vintage-container {
-            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
-                        url('https://www.transparenttextures.com/patterns/pinstripe.png');
-            border: 1px solid var(--gold);
-            position: relative;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .victorian-border {
-            border: 8px double var(--gold);
-            margin: 10px;
-            padding: 15px;
-        }
-        @media (min-width: 768px) {
-            .victorian-border {
-                margin: 20px;
+ margin: 20px;
                 padding: 40px;
             }
         }
@@ -216,6 +176,17 @@
                 </a>
             </div>
 
+            <div class="text-center mb-12 md:mb-16 px-2">
+                <div class="ornament-line mb-4 opacity-40">
+                    <div class="line w-10"></div>
+                    <span class="text-xs">❦</span>
+                    <div class="line w-10"></div>
+                </div>
+                <h3 class="title-font text-gold text-base md:text-lg uppercase mb-2 tracking-widest">Código de Vestimenta</h3>
+                <p class="text-xl md:text-2xl font-light text-white mb-1">Elegante Sport</p>
+                <p class="text-gray-400 italic text-sm md:text-base">Tu presencia es nuestro mejor regalo</p>
+            </div>
+
             <div class="bg-white/5 p-5 md:p-8 border border-gold/30 relative mb-10 mx-1">
                 <h3 class="title-font text-xl md:text-2xl text-center mb-8">Confirmación</h3>
                 
@@ -224,7 +195,6 @@
                         <div class="space-y-2">
                             <label class="text-[10px] uppercase tracking-widest text-gold font-bold">Nombre y Apellido del Invitado</label>
                             <input type="text" id="nombre" placeholder="Escriba aquí..." required class="w-full bg-transparent border-b border-gold/50 p-3 text-white focus:outline-none focus:border-gold transition-colors text-sm">
-                            <!-- Cartel de alerta en rojo -->
                             <p id="nameAlertError" class="text-[11px] text-red-600 font-bold uppercase tracking-wider mt-1 hidden">
                                 ⚠ ¡Por favor, ingrese su nombre y apellido!
                             </p>
@@ -243,14 +213,45 @@
                             </label>
                         </div>
 
-                        <div id="menuSection" class="space-y-2 transition-all duration-300">
-                            <label class="text-[10px] uppercase tracking-widest text-gold font-bold">Menú Preferente</label>
-                            <select id="dieta" class="w-full bg-black border border-gold/50 p-3 text-xs md:text-sm text-gray-300 focus:outline-none">
-                                <option value="Sin restricciones">Menú Tradicional</option>
-                                <option value="Celiaco">Sin TACC (Celiaco)</option>
-                                <option value="Vegetariano">Vegetariano</option>
-                                <option value="Vegano">Vegano</option>
-                            </select>
+                        <div id="menuSection" class="space-y-6 transition-all duration-300">
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-widest text-gold font-bold">Menú Preferente</label>
+                                <select id="dieta" class="w-full bg-black border border-gold/50 p-3 text-xs md:text-sm text-gray-300 focus:outline-none">
+                                    <option value="Sin restricciones">Menú Tradicional</option>
+                                    <option value="Celiaco">Sin TACC (Celiaco)</option>
+                                    <option value="Vegetariano">Vegetariano</option>
+                                </select>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase tracking-widest text-gold font-bold">Mensajes Adicionales</label>
+                                <textarea id="comentario" rows="2" placeholder="Comenta aquí..." class="w-full bg-transparent border border-gold/30 p-3 text-white focus:outline-none focus:border-gold transition-colors text-xs md:text-sm resize-none"></textarea>
+                            </div>
+
+                            <div class="pt-4 border-t border-gold/20">
+                                <label class="text-[10px] uppercase tracking-widest text-gold font-bold">¿Desea confirmar algún integrante más?</label>
+                                <div class="grid grid-cols-2 gap-4 py-2">
+                                    <label class="flex items-center cursor-pointer" onclick="toggleExtraGuestSection(true)">
+                                        <input type="radio" name="extraGuest" value="Si" id="extraSi" class="hidden peer">
+                                        <span class="radio-dot"></span>
+                                        <span class="text-xs uppercase tracking-widest text-gray-300">Sí</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer" onclick="toggleExtraGuestSection(false)">
+                                        <input type="radio" name="extraGuest" value="No" checked id="extraNo" class="hidden peer">
+                                        <span class="radio-dot"></span>
+                                        <span class="text-xs uppercase tracking-widest text-gray-300">No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="extraGuestContainer" class="hidden space-y-4">
+                                <div id="extraGuestsList" class="space-y-4">
+                                    <!-- Campos dinámicos -->
+                                </div>
+                                <button type="button" onclick="addExtraGuestField()" class="text-[10px] uppercase tracking-widest text-gold border border-gold/30 px-3 py-2 hover:bg-gold/10 transition-colors w-full md:w-auto">
+                                    + Agregar otro acompañante
+                                </button>
+                            </div>
                         </div>
 
                         <div id="absenceMessage" class="hidden text-center py-4 px-2">
@@ -259,22 +260,14 @@
                             </p>
                         </div>
 
-                        <button type="button" onclick="prepareWhatsApp()" class="w-full mt-8 py-4 btn-vintage font-bold uppercase text-[10px] md:text-xs tracking-widest shadow-lg">
-                            Generar Mensaje
+                        <button id="submitBtn" type="button" onclick="prepareWhatsApp()" class="w-full mt-8 py-4 btn-vintage font-bold uppercase text-[10px] md:text-xs tracking-widest shadow-lg">
+                            Enviar Respuesta
                         </button>
                     </div>
 
-                    <div id="whatsappContainer" class="hidden text-center space-y-6">
-                        <div class="space-y-2">
-                            <p class="text-gold text-[10px] uppercase tracking-[0.2em] animate-pulse">Mensaje listo para enviar</p>
-                            <p class="text-gray-400 text-[9px] uppercase tracking-widest italic">(Toca abajo para abrir WhatsApp y enviar)</p>
-                        </div>
-                        <a id="finalWhatsAppBtn" href="#" target="_blank" class="w-full py-4 md:py-5 bg-green-900/20 border border-green-600 text-green-500 flex flex-col items-center justify-center font-bold uppercase text-xs md:text-sm tracking-widest hover:bg-green-600 hover:text-white transition-all shadow-xl gap-1">
-                            <span>📱 ENVIAR WHATSAPP</span>
-                            <span class="text-[8px] opacity-70">¡No olvides presionar enviar en WhatsApp!</span>
-                        </a>
-                        <button type="button" onclick="resetForm()" class="inline-block mt-4 px-4 py-2 border border-gold/30 text-gold text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-gold/20 transition-colors shadow-sm bg-gold/5">
-                            ✎ Modificar mis datos
+                    <div id="changeResponseContainer" class="hidden text-center pt-4 border-t border-gold/20 mt-4">
+                        <button type="button" onclick="resetForm()" class="text-[9px] uppercase tracking-[0.2em] text-gold/60 hover:text-gold transition-colors">
+                            ¿Deseas cambiar tu respuesta?
                         </button>
                     </div>
                 </form>
@@ -289,7 +282,6 @@
                     <span class="text-lg">❦</span>
                     <div class="line"></div>
                 </div>
-                <!-- Sección resaltada -->
                 <p class="title-font text-[10px] md:text-[11px] uppercase tracking-[0.6em] mt-4 opacity-80 font-bold text-gold">
                     Guadalupe • 2026
                 </p>
@@ -297,20 +289,17 @@
         </div>
     </div>
 
-    <!-- Control de Música -->
     <div class="fixed bottom-6 right-6 z-[100]">
         <button id="musicToggle" class="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-black rounded-full border border-gold shadow-lg text-gold text-lg md:text-xl active:scale-95 transition-transform">
             <span id="musicIcon">▶</span>
         </button>
     </div>
 
-    <!-- Fuente de audio directa y estable -->
     <audio id="bgMusic" loop preload="auto">
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        // Cuenta Regresiva
         const eventDate = new Date('May 09, 2026 21:00:00').getTime();
         const updateCountdown = setInterval(function() {
             const now = new Date().getTime();
@@ -330,16 +319,6 @@
         }, 1000);
 
         function validateAndToggle(value) {
-            const nombreInput = document.getElementById('nombre');
-            const nombre = nombreInput.value.trim();
-            const alertError = document.getElementById('nameAlertError');
-            
-            if (nombre === "") {
-                alertError.classList.remove('hidden');
-                nombreInput.focus();
-                return;
-            }
-
             const menu = document.getElementById('menuSection');
             const message = document.getElementById('absenceMessage');
             if (value === 'Si') {
@@ -348,7 +327,65 @@
             } else {
                 menu.classList.add('hidden');
                 message.classList.remove('hidden');
+                toggleExtraGuestSection(false);
             }
+        }
+
+        function toggleExtraGuestSection(show) {
+            const container = document.getElementById('extraGuestContainer');
+            if (show) {
+                container.classList.remove('hidden');
+                if(document.getElementById('extraGuestsList').children.length === 0) {
+                    addExtraGuestField();
+                }
+            } else {
+                container.classList.add('hidden');
+                document.getElementById('extraGuestsList').innerHTML = "";
+                document.getElementById('extraNo').checked = true;
+            }
+        }
+
+        function addExtraGuestField() {
+            const list = document.getElementById('extraGuestsList');
+            const count = list.children.length + 1;
+            const div = document.createElement('div');
+            div.className = "extra-guest-item space-y-4 pt-4 border-t border-gold/10 bg-gold/5 p-3 rounded relative";
+            div.innerHTML = `
+                <button type="button" onclick="this.parentElement.remove()" class="absolute top-2 right-2 text-gold/40 hover:text-red-500 text-xs">✕</button>
+                <div class="space-y-2">
+                    <label class="text-[9px] uppercase tracking-widest text-gold font-bold italic">Integrante ${count}</label>
+                    <input type="text" placeholder="Nombre completo" class="extra-nombre w-full bg-transparent border-b border-gold/30 p-2 text-white focus:outline-none focus:border-gold text-sm">
+                </div>
+                <div class="grid grid-cols-2 gap-2 py-1">
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="radio" name="extraAsiste_${count}" value="Si" checked id="extraAsi_${count}" class="extra-asiste-si hidden peer">
+                        <span class="radio-dot"></span>
+                        <span class="text-[9px] uppercase tracking-widest text-gray-300">Asiste</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                        <input type="radio" name="extraAsiste_${count}" value="No" id="extraNoAsi_${count}" class="extra-asiste-no hidden peer">
+                        <span class="radio-dot"></span>
+                        <span class="text-[9px] uppercase tracking-widest text-gray-300">No asiste</span>
+                    </label>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[9px] uppercase tracking-widest text-gold font-bold italic">Menú</label>
+                    <select class="extra-dieta w-full bg-black border border-gold/30 p-2 text-xs text-gray-300 focus:outline-none">
+                        <option value="Sin restricciones">Menú Tradicional</option>
+                        <option value="Celiaco">Sin TACC (Celiaco)</option>
+                        <option value="Vegetariano">Vegetariano</option>
+                    </select>
+                </div>
+            `;
+            list.appendChild(div);
+        }
+
+        function resetForm() {
+            document.getElementById('rsvpForm').reset();
+            document.getElementById('changeResponseContainer').classList.add('hidden');
+            validateAndToggle('Si');
+            toggleExtraGuestSection(false);
+            document.getElementById('nombre').focus();
         }
 
         function createPetal() {
@@ -368,11 +405,7 @@
         
         musicBtn.addEventListener('click', function() {
             if (audio.paused) {
-                audio.play().then(() => {
-                    musicIcon.innerText = "⏸";
-                }).catch(error => {
-                    console.error("Error al reproducir audio:", error);
-                });
+                audio.play().then(() => { musicIcon.innerText = "⏸"; });
             } else {
                 audio.pause();
                 musicIcon.innerText = "▶";
@@ -394,29 +427,43 @@
                 alertError.classList.remove('hidden');
                 nombreInput.focus();
                 return; 
-            } else {
-                alertError.classList.add('hidden');
             }
 
             const asisteInput = document.querySelector('input[name="asiste"]:checked');
-            if (!asisteInput) { 
-                alertError.classList.remove('hidden'); 
-                return; 
-            }
-            const asiste = asisteInput.value;
+            const asiste = asisteInput ? asisteInput.value : 'No especificado';
             const dieta = document.getElementById('dieta').value;
-            const telefono = "5491131196403"; 
-            let text = `✨ *Confirmación XV Guadalupe* ✨\n\n*Nombre:* ${nombre}\n*¿Asiste?:* ${asiste === 'Si' ? 'Sí' : 'No'}`;
-            if (asiste === 'Si') text += `\n*Menú:* ${dieta}`;
-            text += `\n\n_Invitación Digital_`;
-            document.getElementById('formFields').classList.add('hidden');
-            document.getElementById('whatsappContainer').classList.remove('hidden');
-            document.getElementById('finalWhatsAppBtn').href = `https://wa.me/${telefono}?text=${encodeURIComponent(text)}`;
-        }
+            const comentario = document.getElementById('comentario').value.trim();
+            
+            const guestItems = document.querySelectorAll('.extra-guest-item');
 
-        function resetForm() {
-            document.getElementById('formFields').classList.remove('hidden');
-            document.getElementById('whatsappContainer').classList.add('hidden');
+            const telefono = "5491131196403"; 
+            let text = `✨ *Confirmación XV Guadalupe* ✨\n\n*Invitado:* ${nombre}\n*¿Asiste?:* ${asiste === 'Si' ? 'Sí' : 'No'}`;
+            
+            if (asiste === 'Si') {
+                text += `\n*Menú:* ${dieta}`;
+                
+                if (guestItems.length > 0) {
+                    text += `\n\n👥 *Integrantes Adicionales:*`;
+                    guestItems.forEach((item, index) => {
+                        const n = item.querySelector('.extra-nombre').value.trim();
+                        if (n) {
+                            const asi = item.querySelector('input[type="radio"]:checked').value === 'Si' ? 'Sí' : 'No';
+                            const die = item.querySelector('.extra-dieta').value;
+                            text += `\n- ${n} | Asiste: ${asi} | Menú: ${die}`;
+                        }
+                    });
+                }
+            }
+
+            if (comentario) {
+                text += `\n\n*Mensajes Adicionales:* ${comentario}`;
+            }
+
+            text += `\n\n_Invitación Digital_`;
+            
+            document.getElementById('changeResponseContainer').classList.remove('hidden');
+            const whatsappUrl = `https://wa.me/${telefono}?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
         }
     </script>
 </body>
