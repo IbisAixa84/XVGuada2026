@@ -21,6 +21,7 @@
             overflow-x: hidden;
             margin: 0;
             padding: 0;
+            -webkit-font-smoothing: antialiased;
         }
         .vintage-container {
             background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
@@ -41,21 +42,65 @@
                 padding: 40px;
             }
         }
-        .title-font {
+
+        .t1-principal {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: clamp(2rem, 8vw, 3.8rem); 
+            line-height: 1.1;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        .t2-seccion {
             font-family: 'Cinzel', serif;
             letter-spacing: 0.2em;
             color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: clamp(1.1rem, 4.5vw, 1.7rem); 
+            text-align: center;
+            width: 100%;
+            display: block;
+            margin-bottom: 1.5rem;
         }
+
+        .t3-subtitulo {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: clamp(0.65rem, 2vw, 0.75rem);
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
         .script-font {
             font-family: 'Great Vibes', cursive;
             color: var(--gold);
+            font-size: clamp(1.8rem, 7vw, 2.6rem);
+            text-align: center;
+            width: 100%;
+            display: block;
         }
+
         .btn-vintage {
             background-color: transparent;
             color: var(--gold);
             border: 1px solid var(--gold);
             transition: all 0.3s ease;
             font-family: 'Cinzel', serif;
+            padding: 0.8rem 1.5rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            display: inline-block;
+            text-align: center;
         }
         .btn-vintage:hover {
             background-color: var(--gold);
@@ -79,8 +124,8 @@
         .divider {
             height: 1px;
             background: linear-gradient(to right, transparent, var(--gold), transparent);
-            width: 80%;
-            margin: 2rem auto;
+            width: 70%;
+            margin: 1.5rem auto;
         }
         .ornament-line {
             display: flex;
@@ -91,39 +136,18 @@
         }
         .line {
             height: 1px;
-            width: 30px;
+            width: clamp(20px, 8vw, 60px);
             background-color: var(--gold);
         }
-        @media (min-width: 768px) {
-            .line { width: 50px; }
-        }
-        .countdown-box {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-        @media (min-width: 768px) {
-            .countdown-box { gap: 1rem; }
-        }
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 50px;
-        }
+        
         .countdown-value {
             font-family: 'Cinzel', serif;
-            font-size: 1.25rem;
+            font-size: clamp(1.1rem, 4vw, 1.8rem);
             color: var(--gold);
             line-height: 1;
         }
-        @media (min-width: 768px) {
-            .countdown-value { font-size: 1.5rem; }
-        }
         .countdown-label {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             opacity: 0.6;
@@ -143,193 +167,185 @@
             display: inline-block;
             transition: all 0.2s;
         }
+
+        .input-left-aligned {
+            text-align: left !important;
+        }
+        .input-left-aligned::placeholder {
+            text-align: left !important;
+        }
     </style>
 </head>
-<body class="min-h-screen py-6 md:py-10 px-3 md:px-4 flex flex-col items-center">
+<body class="min-h-screen py-4 md:py-12 px-3 md:px-6 flex flex-col items-center">
 
     <div id="petals-container" class="fixed inset-0 pointer-events-none"></div>
 
-    <div class="max-w-2xl w-full vintage-container shadow-2xl">
+    <div class="max-w-2xl w-full vintage-container shadow-2xl overflow-hidden">
         <div class="victorian-border">
             
-            <div class="text-center mb-6 md:mb-8">
-                <div class="ornament-line mb-4">
+            <div class="text-center mb-6">
+                <div class="ornament-line mb-3">
                     <div class="line"></div>
-                    <span class="text-xl">❦</span>
+                    <span class="text-lg md:text-xl">❦</span>
                     <div class="line"></div>
                 </div>
-                <p class="title-font text-[9px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] px-2">La elegancia de un sueño hecho realidad</p>
+                <p class="t3-subtitulo opacity-80">La elegancia de un sueño hecho realidad</p>
             </div>
 
-            <div class="text-center mb-8 md:mb-10">
-                <h1 class="title-font text-4xl md:text-7xl font-bold mb-2">Guadalupe</h1>
-                <p class="script-font text-2xl md:text-4xl mt-2">Mis Quince Años</p>
+            <div class="text-center mb-10">
+                <h1 class="t1-principal">Guadalupe</h1>
+                <p class="script-font mt-2">Mis Quince Años</p>
                 <div class="divider"></div>
             </div>
 
-            <div class="text-center mb-10 md:mb-12 px-2 md:px-6">
-                <p class="text-lg md:text-2xl italic leading-relaxed text-gray-300 px-2">
+            <div class="text-center mb-12 px-4 md:px-8">
+                <p class="text-base md:text-xl italic leading-relaxed text-gray-200">
                     "Hay momentos que el corazón guarda para siempre..."
                 </p>
-                <p class="mt-6 text-base md:text-xl font-light text-gray-400 max-w-md mx-auto italic leading-relaxed">
+                <p class="mt-6 text-sm md:text-lg font-light text-gray-400 max-w-md mx-auto italic leading-relaxed">
                     Te invito a compartir una velada única, rodeada de encajes, 
-                    flores y la magia de una noche que quedará grabada en el alma. 
-                    Celebremos juntos este nuevo camino que hoy comienzo a recorrer.
+                    flores y la magia de una noche que quedará grabada en el alma.
                 </p>
             </div>
 
-            <div class="mb-10 md:mb-12 py-6 md:py-8 border-y border-gold/20 text-center">
-                <h3 class="title-font text-gold text-xs md:text-sm uppercase mb-6 tracking-widest">Fecha del Evento</h3>
-                <div class="flex flex-col items-center gap-1 md:gap-2">
-                    <p class="text-lg md:text-xl uppercase tracking-[0.3em] font-light text-gray-400 italic">Sábado</p>
-                    <p class="text-xl md:text-3xl font-light tracking-widest text-white">09 . MAYO . 2026</p>
-                    <p class="text-lg md:text-xl uppercase tracking-[0.3em] font-light text-gray-400 italic">21:00 Horas</p>
+            <div class="mb-12 py-8 border-y border-gold/20 text-center">
+                <h2 class="t2-seccion">Fecha del Evento</h2>
+                <div class="flex flex-col items-center gap-1">
+                    <p class="text-sm md:text-lg uppercase tracking-[0.3em] font-light text-gray-400 italic">Sábado</p>
+                    <p class="text-lg md:text-2xl font-light tracking-widest text-white">09 . MAYO . 2026</p>
+                    <p class="text-sm md:text-lg uppercase tracking-[0.3em] font-light text-gray-400 italic">21:00 Horas</p>
                 </div>
 
-                <div class="countdown-box mt-8 md:mt-10">
-                    <div class="countdown-item">
+                <div class="flex justify-center gap-4 md:gap-8 mt-10">
+                    <div class="flex flex-col items-center">
                         <span id="days" class="countdown-value">00</span>
                         <span class="countdown-label">Días</span>
                     </div>
-                    <div class="countdown-item">
+                    <div class="flex flex-col items-center">
                         <span id="hours" class="countdown-value">00</span>
-                        <span class="countdown-label">Hs</span>
+                        <span class="countdown-label">Horas</span>
                     </div>
-                    <div class="countdown-item">
+                    <div class="flex flex-col items-center">
                         <span id="minutes" class="countdown-value">00</span>
                         <span class="countdown-label">Min</span>
                     </div>
-                    <div class="countdown-item">
+                    <div class="flex flex-col items-center">
                         <span id="seconds" class="countdown-value">00</span>
                         <span class="countdown-label">Seg</span>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mb-12 md:mb-16 px-2">
-                <h3 class="title-font text-gold text-base md:text-lg uppercase mb-4 tracking-widest">Recepción</h3>
-                <p class="text-xl md:text-2xl mb-2 font-light text-white">La Quinta Recepciones</p>
-                <p class="text-gray-400 italic mb-8 text-sm md:text-base">Av. Bernabé Márquez 2470, Martín Coronado</p>
-                <a href="https://www.google.com/maps/search/Av.+Bernab%C3%A9+M%C3%A1rquez+2470,+Mart%C3%ADn+Coronado" target="_blank" class="inline-block btn-vintage px-6 md:px-8 py-3 md:py-4 uppercase text-[10px] md:text-xs tracking-[0.2em] w-full md:w-auto text-center">
-                    Ver ubicación de la recepción
+            <div class="text-center mb-12 px-2">
+                <h2 class="t2-seccion">Recepción</h2>
+                <p class="text-lg md:text-xl mb-1 font-light text-white">La Quinta Recepciones</p>
+                <p class="text-gray-400 italic mb-6 text-xs md:text-sm">Av. Bernabé Márquez 2470, Martín Coronado</p>
+                <a href="https://www.google.com/maps/search/Av.+Bernab%C3%A9+M%C3%A1rquez+2470,+Mart%C3%ADn+Coronado" target="_blank" class="inline-block btn-vintage w-full md:w-auto">
+                    Ver ubicación
                 </a>
             </div>
 
-            <div class="text-center mb-12 md:mb-16 px-2">
-                <div class="ornament-line mb-4 opacity-40">
-                    <div class="line w-10"></div>
+            <div class="text-center mb-16 px-2">
+                <div class="ornament-line mb-4 opacity-30">
+                    <div class="line w-8"></div>
                     <span class="text-xs">❦</span>
-                    <div class="line w-10"></div>
+                    <div class="line w-8"></div>
                 </div>
-                <h3 class="title-font text-gold text-base md:text-lg uppercase mb-2 tracking-widest">Código de Vestimenta</h3>
-                <p class="text-xl md:text-2xl font-light text-white mb-1">Elegante Sport</p>
-                <p class="text-gray-400 italic text-sm md:text-base">Tu presencia es nuestro mejor regalo</p>
+                <h2 class="t2-seccion">Código de Vestimenta</h2>
+                <p class="text-lg md:text-xl font-light text-white mb-1">Elegante Sport</p>
+                <p class="text-gray-400 italic text-xs md:text-sm">Tu presencia es nuestro mejor regalo</p>
             </div>
 
-            <div class="bg-white/5 p-5 md:p-8 border border-gold/30 relative mb-10 mx-1">
-                <h3 class="title-font text-xl md:text-2xl text-center mb-8">Confirmación</h3>
+            <div class="bg-white/5 p-6 md:p-10 border border-gold/30 relative mb-10 mx-1">
+                <h2 class="t2-seccion">Confirmación</h2>
                 
-                <form id="rsvpForm" class="space-y-6 text-left">
+                <form id="rsvpForm" class="space-y-6">
                     <div id="formFields">
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase tracking-widest text-gold font-bold">Nombre y Apellido del Invitado</label>
-                            <input type="text" id="nombre" placeholder="Escriba aquí..." required class="w-full bg-transparent border-b border-gold/50 p-3 text-white focus:outline-none focus:border-gold transition-colors text-sm">
-                            <p id="nameAlertError" class="text-[11px] text-red-600 font-bold uppercase tracking-wider mt-1 hidden">
-                                ⚠ ¡Por favor, ingrese su nombre y apellido!
-                            </p>
+                        <div class="space-y-2 text-left">
+                            <label class="t3-subtitulo !text-left">Nombre y Apellido</label>
+                            <input type="text" id="nombre" placeholder="Ingresa tu Nombre y Apellido" required class="input-left-aligned w-full bg-transparent border-b border-gold/50 p-3 text-white focus:outline-none focus:border-gold transition-colors text-sm">
+                            <p id="nameAlertError" class="text-[10px] text-red-500 font-bold uppercase mt-1 hidden">⚠ Por favor, ingresa Nombre y Apellido</p>
                         </div>
                         
-                        <div class="grid grid-cols-2 gap-4 py-4">
+                        <div class="flex justify-center gap-8 py-4">
                             <label class="flex items-center cursor-pointer group" onclick="validateAndToggle('Si')">
                                 <input type="radio" name="asiste" id="asisteSi" value="Si" checked class="hidden peer">
                                 <span class="radio-dot"></span>
-                                <span class="text-xs md:text-sm uppercase tracking-widest text-gray-300">Asistiré</span>
+                                <span class="text-xs uppercase tracking-widest text-gray-300">Asistiré</span>
                             </label>
                             <label class="flex items-center cursor-pointer group" onclick="validateAndToggle('No')">
                                 <input type="radio" name="asiste" id="asisteNo" value="No" class="hidden peer">
                                 <span class="radio-dot"></span>
-                                <span class="text-xs md:text-sm uppercase tracking-widest text-gray-300">No podré</span>
+                                <span class="text-xs uppercase tracking-widest text-gray-300">No podré</span>
                             </label>
                         </div>
 
-                        <div id="menuSection" class="space-y-6 transition-all duration-300">
-                            <div class="space-y-2">
-                                <label class="text-[10px] uppercase tracking-widest text-gold font-bold">Menú Preferente</label>
-                                <select id="dieta" class="w-full bg-black border border-gold/50 p-3 text-xs md:text-sm text-gray-300 focus:outline-none">
+                        <div id="menuSection" class="space-y-6">
+                            <div class="space-y-2 text-left">
+                                <label class="t3-subtitulo !text-left">Menú Adicional</label>
+                                <select id="dieta" class="w-full bg-black border border-gold/50 p-3 text-xs text-gray-300 focus:outline-none text-left">
                                     <option value="Sin restricciones">Menú Tradicional</option>
                                     <option value="Celiaco">Sin TACC (Celiaco)</option>
                                     <option value="Vegetariano">Vegetariano</option>
                                 </select>
                             </div>
 
-                            <div class="space-y-2">
-                                <label class="text-[10px] uppercase tracking-widest text-gold font-bold">Mensajes Adicionales</label>
-                                <textarea id="comentario" rows="2" placeholder="Comenta aquí..." class="w-full bg-transparent border border-gold/30 p-3 text-white focus:outline-none focus:border-gold transition-colors text-xs md:text-sm resize-none"></textarea>
+                            <div class="space-y-2 text-left">
+                                <label class="t3-subtitulo !text-left">Mensaje Adicional</label>
+                                <textarea id="comentario" placeholder="Comenta aquí..." class="input-left-aligned w-full bg-transparent border border-gold/30 p-3 text-white focus:outline-none focus:border-gold transition-colors text-sm h-20 resize-none"></textarea>
                             </div>
 
-                            <div class="pt-4 border-t border-gold/20">
-                                <label class="text-[10px] uppercase tracking-widest text-gold font-bold">¿Desea confirmar algún integrante más?</label>
-                                <div class="grid grid-cols-2 gap-4 py-2">
+                            <div class="space-y-2 text-center">
+                                <label class="t3-subtitulo">¿Confirmar más personas?</label>
+                                <div class="flex justify-center gap-8 py-2">
                                     <label class="flex items-center cursor-pointer" onclick="toggleExtraGuestSection(true)">
                                         <input type="radio" name="extraGuest" value="Si" id="extraSi" class="hidden peer">
                                         <span class="radio-dot"></span>
-                                        <span class="text-xs uppercase tracking-widest text-gray-300">Sí</span>
+                                        <span class="text-xs uppercase text-gray-300">Sí</span>
                                     </label>
                                     <label class="flex items-center cursor-pointer" onclick="toggleExtraGuestSection(false)">
                                         <input type="radio" name="extraGuest" value="No" checked id="extraNo" class="hidden peer">
                                         <span class="radio-dot"></span>
-                                        <span class="text-xs uppercase tracking-widest text-gray-300">No</span>
+                                        <span class="text-xs uppercase text-gray-300">No</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div id="extraGuestContainer" class="hidden space-y-4">
-                                <div id="extraGuestsList" class="space-y-4">
-                                    <!-- Campos dinámicos -->
-                                </div>
-                                <button type="button" onclick="addExtraGuestField()" class="text-[10px] uppercase tracking-widest text-gold border border-gold/30 px-3 py-2 hover:bg-gold/10 transition-colors w-full md:w-auto">
-                                    + Agregar otro acompañante
+                                <div id="extraGuestsList" class="space-y-4"></div>
+                                <button type="button" onclick="addExtraGuestField()" class="text-[9px] uppercase tracking-widest text-gold border border-gold/30 px-3 py-2 w-full">
+                                    + Agregar acompañante
                                 </button>
                             </div>
                         </div>
 
-                        <div id="absenceMessage" class="hidden text-center py-4 px-2">
-                            <p class="script-font text-2xl text-gold/80 italic">
-                                "Lamentamos mucho que no puedas estar, ¡te extrañaremos en esta noche mágica!"
-                            </p>
-                        </div>
-
-                        <button id="submitBtn" type="button" onclick="prepareWhatsApp()" class="w-full mt-8 py-4 btn-vintage font-bold uppercase text-[10px] md:text-xs tracking-widest shadow-lg">
+                        <button id="submitBtn" type="button" onclick="prepareWhatsApp()" class="w-full mt-8 py-4 btn-vintage font-bold shadow-lg">
                             Enviar Respuesta
                         </button>
                     </div>
 
-                    <div id="changeResponseContainer" class="hidden text-center pt-4 border-t border-gold/20 mt-4">
-                        <button type="button" onclick="resetForm()" class="text-[9px] uppercase tracking-[0.2em] text-gold/60 hover:text-gold transition-colors">
-                            ¿Deseas cambiar tu respuesta?
+                    <div id="changeResponseContainer" class="hidden text-center mt-4">
+                        <button type="button" onclick="resetForm()" class="text-[9px] uppercase tracking-widest text-gold/60 underline">
+                            ¿Cambiar respuesta?
                         </button>
                     </div>
                 </form>
             </div>
 
-            <div class="mt-8 text-center pb-6 md:pb-8">
-                <p class="text-xl md:text-3xl script-font mb-4 px-2">
-                    Los esperamos para compartir una noche inolvidable
-                </p>
-                <div class="ornament-line mt-6 opacity-60">
+            <div class="mt-8 text-center pb-8">
+                <p class="script-font text-2xl md:text-3xl mb-4">Te esperamos</p>
+                <div class="ornament-line opacity-40">
                     <div class="line"></div>
                     <span class="text-lg">❦</span>
                     <div class="line"></div>
                 </div>
-                <p class="title-font text-[10px] md:text-[11px] uppercase tracking-[0.6em] mt-4 opacity-80 font-bold text-gold">
-                    Guadalupe • 2026
-                </p>
+                <p class="t3-subtitulo text-[10px] mt-4 opacity-70">Guadalupe • 2026</p>
             </div>
         </div>
     </div>
 
     <div class="fixed bottom-6 right-6 z-[100]">
-        <button id="musicToggle" class="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-black rounded-full border border-gold shadow-lg text-gold text-lg md:text-xl active:scale-95 transition-transform">
+        <button id="musicToggle" class="w-12 h-12 flex items-center justify-center bg-black/80 rounded-full border border-gold shadow-lg text-gold active:scale-90 transition-transform">
             <span id="musicIcon">▶</span>
         </button>
     </div>
@@ -340,32 +356,24 @@
 
     <script>
         const eventDate = new Date('May 09, 2026 21:00:00').getTime();
-        const updateCountdown = setInterval(function() {
+        const updateCountdown = setInterval(() => {
             const now = new Date().getTime();
             const distance = eventDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
             if (distance < 0) {
                 clearInterval(updateCountdown);
-                document.querySelector(".countdown-box").innerHTML = "<p class='title-font text-gold'>¡Es hoy!</p>";
+                return;
             }
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
         }, 1000);
 
         function validateAndToggle(value) {
             const menu = document.getElementById('menuSection');
-            const message = document.getElementById('absenceMessage');
-            if (value === 'Si') {
-                menu.classList.remove('hidden');
-                message.classList.add('hidden');
-            } else {
+            if (value === 'Si') menu.classList.remove('hidden');
+            else {
                 menu.classList.add('hidden');
-                message.classList.remove('hidden');
                 toggleExtraGuestSection(false);
             }
         }
@@ -374,9 +382,7 @@
             const container = document.getElementById('extraGuestContainer');
             if (show) {
                 container.classList.remove('hidden');
-                if(document.getElementById('extraGuestsList').children.length === 0) {
-                    addExtraGuestField();
-                }
+                if(!document.getElementById('extraGuestsList').children.length) addExtraGuestField();
             } else {
                 container.classList.add('hidden');
                 document.getElementById('extraGuestsList').innerHTML = "";
@@ -386,32 +392,31 @@
 
         function addExtraGuestField() {
             const list = document.getElementById('extraGuestsList');
-            const count = list.children.length + 1;
+            const count = Date.now(); // ID único para evitar conflictos de selección de radio buttons
             const div = document.createElement('div');
-            div.className = "extra-guest-item space-y-4 pt-4 border-t border-gold/10 bg-gold/5 p-3 rounded relative";
+            div.className = "extra-guest-item space-y-3 pt-3 border-t border-gold/10 bg-gold/5 p-3 relative";
             div.innerHTML = `
-                <button type="button" onclick="this.parentElement.remove()" class="absolute top-2 right-2 text-gold/40 hover:text-red-500 text-xs">✕</button>
-                <div class="space-y-2">
-                    <label class="text-[9px] uppercase tracking-widest text-gold font-bold italic">Integrante ${count}</label>
-                    <input type="text" placeholder="Nombre completo" class="extra-nombre w-full bg-transparent border-b border-gold/30 p-2 text-white focus:outline-none focus:border-gold text-sm">
+                <button type="button" onclick="this.parentElement.remove()" class="absolute top-2 right-2 text-gold/40 text-[9px]">✕</button>
+                <div class="space-y-1 text-center">
+                    <label class="t3-subtitulo !text-center text-[8px] italic">Nuevo Acompañante</label>
+                    <input type="text" placeholder="Nombre y Apellido" class="extra-nombre w-full bg-transparent border-b border-gold/30 p-2 text-white focus:outline-none text-xs text-center">
                 </div>
-                <div class="grid grid-cols-2 gap-2 py-1">
-                    <label class="flex items-center cursor-pointer group">
-                        <input type="radio" name="extraAsiste_${count}" value="Si" checked id="extraAsi_${count}" class="extra-asiste-si hidden peer">
-                        <span class="radio-dot"></span>
-                        <span class="text-[9px] uppercase tracking-widest text-gray-300">Asiste</span>
-                    </label>
-                    <label class="flex items-center cursor-pointer group">
-                        <input type="radio" name="extraAsiste_${count}" value="No" id="extraNoAsi_${count}" class="extra-asiste-no hidden peer">
-                        <span class="radio-dot"></span>
-                        <span class="text-[9px] uppercase tracking-widest text-gray-300">No asiste</span>
-                    </label>
-                </div>
-                <div class="space-y-2">
-                    <label class="text-[9px] uppercase tracking-widest text-gold font-bold italic">Menú</label>
-                    <select class="extra-dieta w-full bg-black border border-gold/30 p-2 text-xs text-gray-300 focus:outline-none">
-                        <option value="Sin restricciones">Menú Tradicional</option>
-                        <option value="Celiaco">Sin TACC (Celiaco)</option>
+                <div class="flex flex-col gap-3">
+                    <div class="flex justify-center gap-4 py-1">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="extraAsiste_${count}" value="Si" checked class="extra-asiste-radio-si hidden peer">
+                            <span class="radio-dot !w-3 !h-3"></span>
+                            <span class="text-[9px] uppercase text-gray-300">Asiste</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="extraAsiste_${count}" value="No" class="extra-asiste-radio-no hidden peer">
+                            <span class="radio-dot !w-3 !h-3"></span>
+                            <span class="text-[9px] uppercase text-gray-300">No asiste</span>
+                        </label>
+                    </div>
+                    <select class="extra-dieta w-full bg-black border border-gold/30 p-1 text-[10px] text-gray-300 text-center">
+                        <option value="Tradicional">Menú Tradicional</option>
+                        <option value="Celiaco">Sin TACC</option>
                         <option value="Vegetariano">Vegetariano</option>
                     </select>
                 </div>
@@ -424,7 +429,7 @@
             document.getElementById('changeResponseContainer').classList.add('hidden');
             validateAndToggle('Si');
             toggleExtraGuestSection(false);
-            document.getElementById('nombre').focus();
+            document.getElementById('nameAlertError').classList.add('hidden');
         }
 
         function createPetal() {
@@ -436,73 +441,64 @@
             container.appendChild(petal);
             setTimeout(() => petal.remove(), 7000);
         }
-        setInterval(createPetal, 450);
+        setInterval(createPetal, 600);
 
         const audio = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicToggle');
-        const musicIcon = document.getElementById('musicIcon');
-        
-        musicBtn.addEventListener('click', function() {
+        musicBtn.addEventListener('click', () => {
             if (audio.paused) {
-                audio.play().then(() => { musicIcon.innerText = "⏸"; });
+                audio.play();
+                document.getElementById('musicIcon').innerText = "⏸";
             } else {
                 audio.pause();
-                musicIcon.innerText = "▶";
-            }
-        });
-
-        document.getElementById('nombre').addEventListener('input', function() {
-            if (this.value.trim() !== "") {
-                document.getElementById('nameAlertError').classList.add('hidden');
+                document.getElementById('musicIcon').innerText = "▶";
             }
         });
 
         function prepareWhatsApp() {
-            const nombreInput = document.getElementById('nombre');
-            const nombre = nombreInput.value.trim();
-            const alertError = document.getElementById('nameAlertError');
-            
-            if (!nombre) { 
-                alertError.classList.remove('hidden');
-                nombreInput.focus();
-                return; 
+            const nombre = document.getElementById('nombre').value.trim();
+            if (!nombre) {
+                document.getElementById('nameAlertError').classList.remove('hidden');
+                document.getElementById('nombre').focus();
+                return;
             }
-
-            const asisteInput = document.querySelector('input[name="asiste"]:checked');
-            const asiste = asisteInput ? asisteInput.value : 'No especificado';
+            
+            document.getElementById('nameAlertError').classList.add('hidden');
+            const asiste = document.querySelector('input[name="asiste"]:checked').value;
             const dieta = document.getElementById('dieta').value;
             const comentario = document.getElementById('comentario').value.trim();
             
-            const guestItems = document.querySelectorAll('.extra-guest-item');
-
-            const telefono = "5491131196403"; 
-            let text = `✨ *Confirmación XV Guadalupe* ✨\n\n*Invitado:* ${nombre}\n*¿Asiste?:* ${asiste === 'Si' ? 'Sí' : 'No'}`;
+            let msg = `✨ *Confirmación XV Guadalupe* ✨\n\n`;
+            msg += `👤 *Invitado Principal:* ${nombre}\n`;
+            msg += `*¿Asiste?:* ${asiste === 'Si' ? '✅ Sí' : '❌ No'}\n`;
             
             if (asiste === 'Si') {
-                text += `\n*Menú:* ${dieta}`;
+                msg += `*Menú:* ${dieta}\n`;
+                if (comentario) msg += `*Mensaje:* ${comentario}\n`;
                 
-                if (guestItems.length > 0) {
-                    text += `\n\n👥 *Integrantes Adicionales:*`;
-                    guestItems.forEach((item, index) => {
-                        const n = item.querySelector('.extra-nombre').value.trim();
-                        if (n) {
-                            const asi = item.querySelector('input[type="radio"]:checked').value === 'Si' ? 'Sí' : 'No';
-                            const die = item.querySelector('.extra-dieta').value;
-                            text += `\n- ${n} | Asiste: ${asi} | Menú: ${die}`;
+                const extras = document.querySelectorAll('.extra-guest-item');
+                if (extras.length > 0) {
+                    msg += `\n👥 *Acompañantes:*`;
+                    extras.forEach((item) => {
+                        const extraNombre = item.querySelector('.extra-nombre').value.trim();
+                        if (extraNombre) {
+                            // Captura precisa: verificamos cuál de los dos radios está seleccionado
+                            const radioSi = item.querySelector('.extra-asiste-radio-si');
+                            const extraAsiste = radioSi.checked ? 'Si' : 'No';
+                            const extraDieta = item.querySelector('.extra-dieta').value;
+                            
+                            msg += `\n\n👉 *${extraNombre}*`;
+                            msg += `\n   Asiste: ${extraAsiste === 'Si' ? '✅ Sí' : '❌ No'}`;
+                            if (extraAsiste === 'Si') {
+                                msg += `\n   Menú: ${extraDieta}`;
+                            }
                         }
                     });
                 }
             }
 
-            if (comentario) {
-                text += `\n\n*Mensajes Adicionales:* ${comentario}`;
-            }
-
-            text += `\n\n_Invitación Digital_`;
-            
             document.getElementById('changeResponseContainer').classList.remove('hidden');
-            const whatsappUrl = `https://wa.me/${telefono}?text=${encodeURIComponent(text)}`;
-            window.open(whatsappUrl, '_blank');
+            window.open(`https://wa.me/5491131196403?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
